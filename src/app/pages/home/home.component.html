@@ -1,0 +1,28 @@
+<div class="card border-primary mb-3">
+    <div class="card-header">Personas</div>
+    <div class="card-body text-primary">
+      <h5 class="card-title">Listado de personas</h5>
+  
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>nombre</th>
+            <th>apellido</th>
+            <th>identificacion</th>
+            <th>usuario</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let person of persons">
+            <td>{{ person.id }}</td>
+            <td>{{ person.firstname }}</td>
+            <td>{{ person.lastname }}</td>
+            <td>{{ person.identification }}</td>
+            <td>{{ person.username}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
