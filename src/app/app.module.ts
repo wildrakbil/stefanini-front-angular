@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from "@angular/common/http";
+import { FormsModule } from '@angular/forms';
 
 import { PAGES_ROUTES } from "./pages/pages.rutes";
 
@@ -13,8 +14,8 @@ import { PagesModule } from "./pages/pages.module";
 @NgModule({
   declarations: [AppComponent],
   imports: [
-  
     HttpClientModule,
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     PagesModule,

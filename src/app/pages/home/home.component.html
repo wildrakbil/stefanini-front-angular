@@ -2,6 +2,11 @@
     <div class="card-header">Personas</div>
     <div class="card-body text-primary">
       <h5 class="card-title">Listado de personas</h5>
+      <div class="my-2 text-left">
+        <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/person/form']">
+          Crear Cliente
+        </button>
+      </div>
   
       <table class="table table-bordered table-striped">
         <thead>
@@ -11,6 +16,8 @@
             <th>apellido</th>
             <th>identificacion</th>
             <th>usuario</th>
+            <th>editar</th>
+            <th>eliminar</th>
           </tr>
         </thead>
         <tbody>
@@ -20,6 +27,12 @@
             <td>{{ person.lastname }}</td>
             <td>{{ person.identification }}</td>
             <td>{{ person.username}}</td>
+            <td>
+              <button type="button" name="editar" [routerLink]="['/person/form', person.id]" class="btn btn-primary btn-sm">editar</button>
+            </td>
+            <td>
+              <button type="button" name="eliminar" (click)='delete(person)' class="btn btn-danger btn-sm">eliminar</button>
+            </td>
           </tr>
         </tbody>
       </table>

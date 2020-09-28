@@ -10,9 +10,10 @@ import { CommonModule } from "@angular/common";
 import { ComponentsModule } from "../components/components.module";
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { PersonComponent } from './person/person.component';
 
 @NgModule({
-    declarations: [PagesComponent,HomeComponent, LoginComponent],
+    declarations: [PagesComponent,HomeComponent, LoginComponent, PersonComponent],
     imports: [
       CommonModule,
       ComponentsModule,
