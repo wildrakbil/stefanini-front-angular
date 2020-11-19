@@ -16,7 +16,7 @@ import { PagesModule } from "./pages/pages.module";
   imports: [
     HttpClientModule,
     FormsModule,
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     PagesModule,
     ComponentsModule,
