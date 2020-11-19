@@ -1,1 +1,1 @@
-web: npm run satart:heroku
+web: npm run Start:heroku
