@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Person } from 'src/app/models/person';
+import { User } from 'src/app/models/user';
 import { PersonService } from 'src/app/services/person.service';
 import swal from 'sweetalert2';
 
@@ -9,7 +9,7 @@ import swal from 'sweetalert2';
 })
 export class HomeComponent implements OnInit {
 
-  persons :Person[];
+  persons :User[];
   content = '';
   constructor(private personService: PersonService) { }
 
@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
     );
   }
 
-  delete(person: Person): void {
+  delete(person: User): void {
     swal.fire('Está seguro?', `¿Seguro que desea eliminar al cliente ${person.firstname} ${person.lastname}?`,'warning'
     ).then((result) => {
       if (result.value) {

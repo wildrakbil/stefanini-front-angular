@@ -4,7 +4,7 @@ import {Router} from '@angular/router';
 import { HttpClient } from "@angular/common/http";
 import { map } from "rxjs/operators";
 import { JwtHelperService } from "@auth0/angular-jwt";
-import { Person } from "../models/person";
+import { User } from "../models/user";
 import { catchError } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 
@@ -15,10 +15,10 @@ import swal from 'sweetalert2';
 })
 export class AuthService {
 
-  authUrl = "http://localhost:8080/api/";
+  authUrl = "https://spring-on-heroku1.herokuapp.com/api/";
   helper = new JwtHelperService();
   decodedToken: any;
-  currentUser: Person;
+  currentUser: User;
 
   constructor(private http: HttpClient,private router:Router) { }
 
@@ -43,4 +43,11 @@ export class AuthService {
     const token = localStorage.getItem("token");
     return !this.helper.isTokenExpired(token);
   }
+
+  logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    console.log('user out storage');
+  }
+
 }

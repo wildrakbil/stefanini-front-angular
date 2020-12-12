@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { PersonService } from 'src/app/services/person.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import swal from 'sweetalert2';
-import { Person } from 'src/app/models/person';
-import { IdentificationTypeCode } from 'src/app/models/identificationTypeCode';
+import { User } from 'src/app/models/user';
+import { Role } from 'src/app/models/role';
 
 @Component({
   selector: 'app-person',
@@ -11,8 +11,9 @@ import { IdentificationTypeCode } from 'src/app/models/identificationTypeCode';
 })
 export class PersonComponent implements OnInit {
 
-  person: Person = new Person();
-  identificationTypet: IdentificationTypeCode  = new IdentificationTypeCode();
+  person: User = new User();
+  role: Role  = new Role();
+  content = '';
 
   titulo: string = "Crear Cliente";
   errores: string[];
@@ -28,7 +29,12 @@ export class PersonComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       let id = params['id'];
       if (id) {
-        this.personService.getPerson(id).subscribe((person) => this.person = person);
+        this.personService.getPerson(id).subscribe(person =>{
+          this.person = person
+        },
+        err => {
+          this.content = JSON.parse(err.error).messsage;
+        });
       }
     })
   }
