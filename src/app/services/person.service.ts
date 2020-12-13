@@ -8,11 +8,6 @@ import {Router} from '@angular/router';
 
 import swal from 'sweetalert2';
 
-
-
-const API_URL = 'https://spring-on-heroku1.herokuapp.com/api/persons';
-const API_PERSON_URL = 'https://spring-on-heroku1.herokuapp.com/api/person';
-
 const httpOptions = {
   headers: new HttpHeaders({
     Authorization: "Bearer " + localStorage.getItem("token")
@@ -24,10 +19,13 @@ const httpOptions = {
 })
 export class PersonService {
 
+  personsUrl = 'https://spring-on-heroku1.herokuapp.com/api/users';
+  personUrl = 'https://spring-on-heroku1.herokuapp.com/api/user';
+
   constructor(private http: HttpClient,private router:Router) { }
 
   getPersons(): Observable<User[]> {
-    return this.http.get<User[]>(API_URL,httpOptions)
+    return this.http.get<User[]>(this.personsUrl,httpOptions)
     .pipe(
       catchError(e =>{
         this.router.navigate(['/login']);
@@ -39,7 +37,7 @@ export class PersonService {
   }
 
   getPerson(id): Observable<User> {
-    return this.http.get<User>(`${API_PERSON_URL}/${id}`,httpOptions).pipe(
+    return this.http.get<User>(`${this.personUrl}/${id}`,httpOptions).pipe(
       catchError(e => {
         this.router.navigate(['/home']);
         console.error(e.error.mensaje);
@@ -50,7 +48,7 @@ export class PersonService {
   }
 
   create(person: User): Observable<User> {
-    return this.http.post(API_PERSON_URL,person,httpOptions).pipe(
+    return this.http.post(this.personsUrl,person,httpOptions).pipe(
       map((response: any) => response.person as User),
       catchError(e => {
         if (e.error.status == 500) {
@@ -65,7 +63,7 @@ export class PersonService {
   }
 
   update(person: User): Observable<any> {
-    return this.http.put(`${API_PERSON_URL}/${person.id}`,person,httpOptions).pipe(
+    return this.http.put(`${this.personsUrl}/${person.id}`,person,httpOptions).pipe(
       catchError(e => {
         if (e.error.status == 400) {
           return throwError(e);
@@ -78,7 +76,7 @@ export class PersonService {
   }
 
   delete(id: Number): Observable<User> {
-    return this.http.delete<User>(`${API_PERSON_URL}/${id}`, httpOptions).pipe(
+    return this.http.delete<User>(`${this.personsUrl}/${id}`, httpOptions).pipe(
       catchError(e => {
         console.error(e.error.mensaje);
         swal.fire(e.error.mensaje, e.error.error, 'error');
