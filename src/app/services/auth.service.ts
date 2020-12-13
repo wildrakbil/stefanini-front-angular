@@ -27,7 +27,7 @@ export class AuthService {
       map((response: any) => {
         const user = response;
         localStorage.setItem("token", user.token);
-        localStorage.setItem("user", JSON.stringify(user.user.username));
+        localStorage.setItem("user", user.user.username);
         this.decodedToken = this.helper.decodeToken(user.token);
         this.currentUser = user.userToReturn;
       }),
