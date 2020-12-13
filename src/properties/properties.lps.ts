@@ -13,6 +13,7 @@ export const propertiesLps = {
   },
   componentes:{
     footer:true,
+    reservar:true,
     servicios:{
       lista:true,
       mosaico:true,
@@ -31,6 +32,7 @@ export interface IPropertiesLPS {
   },
   componentes:{
     footer:boolean,
+    reservar:boolean,
     servicios:{
       lista:boolean,
       mosaico:boolean,

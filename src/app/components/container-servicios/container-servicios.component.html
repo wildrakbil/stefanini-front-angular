@@ -1,0 +1,43 @@
+<ul class="nav justify-content-center">
+  <li class="nav-item" *ngIf="_lpsConfig.componentes.servicios.lista">
+    <a
+      class="nav-link active"
+      (click)="selectOption('01')"
+      style="cursor: pointer"
+      >Lista</a
+    >
+  </li>
+  <li class="nav-item" *ngIf="_lpsConfig.componentes.servicios.mosaico">
+    <a class="nav-link" (click)="selectOption('02')" style="cursor: pointer"
+      >Mosaico</a
+    >
+  </li>
+  <li class="nav-item" *ngIf="_lpsConfig.componentes.servicios.galeria">
+    <a class="nav-link" (click)="selectOption('03')" style="cursor: pointer"
+      >Galeria</a
+    >
+  </li>
+</ul>
+
+<ng-container [ngSwitch]="opcion">
+  <ng-container *ngSwitchCase="'01'">
+    <ng-container>
+      <app-lista-servicios [items]="listServices" [reservar]="_lpsConfig.componentes.reservar"> </app-lista-servicios>
+    </ng-container>
+  </ng-container>
+  <ng-container *ngSwitchCase="'02'">
+    <ng-container>
+      <app-mosaico-servicios [items]="listServices" [reservar]="_lpsConfig.componentes.reservar"></app-mosaico-servicios>
+    </ng-container>
+  </ng-container>
+  <ng-container *ngSwitchCase="'03'">
+    <ng-container>
+      <app-galeria-servicios [items]="listServices" [reservar]="_lpsConfig.componentes.reservar"></app-galeria-servicios>
+    </ng-container>
+  </ng-container>
+  <ng-container *ngSwitchDefault>
+    <ng-container>
+      <app-lista-servicios [items]="listServices" [reservar]="_lpsConfig.componentes.reservar"> </app-lista-servicios>
+    </ng-container>
+  </ng-container>
+</ng-container>

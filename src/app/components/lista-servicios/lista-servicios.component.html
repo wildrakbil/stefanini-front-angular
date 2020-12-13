@@ -1,0 +1,22 @@
+<div
+  class="card"
+  *ngFor="let item of items"
+  style="margin: 10px; text-align-last: left"
+>
+  <div>
+    <div class="card-body">
+      <div class="d-flex flex-row">
+        <div class="p-2">
+          <img [src]="item.path_img" alt="Card image cap" style="width: 10vw" />
+        </div>
+        <div class="p-2">
+
+            <a style="font-weight: bold">{{ item.name }}</a>
+            <p>{{ item.descripcion }}</p>
+            <a href="#" class="btn btn-primary" *ngIf="reservar">Reservar</a>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -4,10 +4,22 @@ import { RouterModule } from '@angular/router';
 
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { ContainerServiciosComponent } from './container-servicios/container-servicios.component';
+import { ListaServiciosComponent } from './lista-servicios/lista-servicios.component';
+import { GaleriaServiciosComponent } from './galeria-servicios/galeria-servicios.component';
+import { MosaicoServiciosComponent } from './mosaico-servicios/mosaico-servicios.component';
 
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent],
+  declarations: [
+    HeaderComponent,
+    FooterComponent,
+    ContainerServiciosComponent,
+    GaleriaServiciosComponent,
+    MosaicoServiciosComponent,
+    ListaServiciosComponent
+
+  ],
   imports: [CommonModule, RouterModule],
-  exports: [HeaderComponent, FooterComponent],
+  exports: [HeaderComponent, FooterComponent, ContainerServiciosComponent],
 })
 export class ComponentsModule {}

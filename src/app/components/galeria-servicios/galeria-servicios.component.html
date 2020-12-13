@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div
+      class="col-lg-3 col-md-4 col-sm-6"
+      data-toggle="modal"
+      data-target="#modal"
+      *ngFor="let item of items"
+    >
+      <div
+        class="card"
+        style="width: 18rem"
+        style="padding: 3px import!; height: 350"
+      >
+        <img class="card-img-top" [src]="item.path_img" alt="Card image cap" />
+        <div class="card-body">
+          <h5 class="card-title">{{ item.name }}</h5>
+          <p class="card-text">{{ item.descripcion }}.</p>
+          <a href="#" class="btn btn-primary" *ngIf="reservar">Reservar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
