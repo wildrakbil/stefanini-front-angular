@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { APP_CONFIG, IPropertiesLPS } from 'src/properties/properties.lps';
 
 @Component({
   selector: 'app-pages',
@@ -7,7 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PagesComponent implements OnInit {
 
-  constructor() { }
+  public _lpsConfig:IPropertiesLPS;
+
+  constructor(
+    @Inject(APP_CONFIG) private appConfig: any
+  ) {
+
+    this._lpsConfig  = appConfig;
+
+  }
 
   ngOnInit(): void {
   }

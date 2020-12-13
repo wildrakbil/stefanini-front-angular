@@ -1,15 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
-import { PAGES_ROUTES } from "./pages/pages.rutes";
+import { PAGES_ROUTES } from './pages/pages.rutes';
 
 import { AppComponent } from './app.component';
-import { ComponentsModule } from "./components/components.module";
+import { ComponentsModule } from './components/components.module';
 
 import { AppRoutingModule } from './app-routing.module';
-  import { PagesModule } from "./pages/pages.module";
+import { PagesModule } from './pages/pages.module';
+
+//OCALERO
+import { propertiesLps, APP_CONFIG } from './../properties/properties.lps';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,10 +22,13 @@ import { AppRoutingModule } from './app-routing.module';
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     PagesModule,
-    ComponentsModule,
+    //ComponentsModule,
     PAGES_ROUTES,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    //OCALERO
+    { provide: APP_CONFIG, useValue: propertiesLps }
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -12,8 +12,8 @@
     "serve:ssr": "node dist/angular-front-app/server/main.js",
     "build:ssr": "ng build --prod && ng run angular-front-app:server:production",
     "prerender": "ng run angular-front-app:prerender",
-    "start:heroku":"node dist/server",
-    "postinstall":"npm run build:ssr"
+    "start:heroku": "node dist/server",
+    "postinstall": "npm run build:ssr"
   },
   "private": true,
   "dependencies": {
