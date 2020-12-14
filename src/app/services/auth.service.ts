@@ -16,6 +16,7 @@ import swal from 'sweetalert2';
 export class AuthService {
 
   authUrl = "https://spring-on-heroku1.herokuapp.com/api/";
+
   helper = new JwtHelperService();
   decodedToken: any;
   currentUser: User;

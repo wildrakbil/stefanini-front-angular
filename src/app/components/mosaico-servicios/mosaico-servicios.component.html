@@ -1,12 +1,12 @@
 
 <div class="card"  *ngFor="let item of items" style="margin: 10px;text-align-last: center;">
   <div class="card-header">
-    <img [src]="item.path_img" alt="Card image cap"  style="width: 300px;" /><br>
+    <img [src]="item.pathImg" alt="Card image cap"  style="width: 300px;" /><br>
     <a style="font-weight: bold;">{{ item.name }}</a>
   </div>
   <div class="card-body">
     <blockquote class="blockquote mb-0">
-      <p>{{ item.descripcion }}</p>
+      <p>{{ item.description }}</p>
       <a href="#" class="btn btn-primary" *ngIf="reservar">Reservar</a>
     </blockquote>
   </div>
