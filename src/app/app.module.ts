@@ -14,6 +14,11 @@ import { PagesModule } from './pages/pages.module';
 //OCALERO
 import { propertiesLps, APP_CONFIG } from './../properties/properties.lps';
 
+// Firebase
+import { firebaseConfig } from '../environments/environment';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -24,6 +29,9 @@ import { propertiesLps, APP_CONFIG } from './../properties/properties.lps';
     PagesModule,
     //ComponentsModule,
     PAGES_ROUTES,
+    AngularFireModule.initializeApp(firebaseConfig), //Modulo 1 a importa
+    AngularFireAuthModule // Modulo 2 a importar
+
   ],
   providers: [
     //OCALERO

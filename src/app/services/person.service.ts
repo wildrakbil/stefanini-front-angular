@@ -48,7 +48,7 @@ export class PersonService {
   }
 
   create(person: User): Observable<User> {
-    return this.http.post(this.personsUrl,person,httpOptions).pipe(
+    return this.http.post(this.personUrl,person,httpOptions).pipe(
       map((response: any) => response.person as User),
       catchError(e => {
         if (e.error.status == 500) {

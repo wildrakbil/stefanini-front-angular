@@ -27,12 +27,12 @@ export class AuthService {
       map((response: any) => {
         const user = response;
         localStorage.setItem("token", user.token);
-        localStorage.setItem("user", JSON.stringify(user.userToReturn));
+        localStorage.setItem("user", user.user.username);
         this.decodedToken = this.helper.decodeToken(user.token);
-        this.currentUser = user.userToReturn;
+        this.currentUser = user.user.username;
       }),
       catchError(e =>{
-        swal.fire('Error', `Usuario o calve incorrecta`, 'warning');
+        swal.fire('Error', `Usuario o clave incorrecta`, 'warning');
         console.error(e.error.mensaje);
         return throwError(e);
       })
