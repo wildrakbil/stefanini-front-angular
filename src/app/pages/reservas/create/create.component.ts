@@ -6,6 +6,7 @@ import { ReservasService } from 'src/app/services/reservas.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import swal from 'sweetalert2';
 import { DatePipe } from '@angular/common';
+import { ServiciosService } from 'src/app/services/servicios.service';
 
 @Component({
   selector: 'app-create',
@@ -17,19 +18,29 @@ export class CreateComponent implements OnInit {
   reserva: Reserva = new Reserva();
   titulo: string = "Reserva";
   errores: string[];
-  servicio: Service = new Service();
+  //servicio: Service = new Service();
   user: User = new User();
   horas: Number[];
+  servicios :Service[];
+  content = '';
 
   constructor(private reservasService: ReservasService,
+    private serviciosService: ServiciosService,
     private router: Router,private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.servicio.id=1;
     this.user.id=1;
     this.reserva.user = this.user;
-    this.reserva.service = this.servicio;
     this.horas = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
+
+    this.serviciosService.getServices().subscribe(
+      servicios =>{
+        this.servicios = servicios
+      },
+      err => {
+        this.content = JSON.parse(err.error).messsage;
+      }
+    );
 
   }
 

@@ -26,9 +26,6 @@
             <td>{{ reserva.startTime }}</td>
             <td>{{ reserva.user.username}}</td>
             <td>
-              <button type="button" name="editar" [routerLink]="['/reserva/form', reserva.id]" class="btn btn-primary btn-sm">Editar</button>
-            </td>
-            <td>
               <button type="button" name="eliminar" (click)='delete(reserva)' class="btn btn-danger btn-sm">Cancelar</button>
             </td>
           </tr>

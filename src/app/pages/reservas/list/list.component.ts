@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ReservasService } from 'src/app/services/reservas.service';
+import { ServiciosService } from 'src/app/services/servicios.service';
 import { Reserva } from 'src/app/models/reserva';
+import { Service } from 'src/app/models/service';
 import swal from 'sweetalert2';
 import { Router, ActivatedRoute } from '@angular/router';
 
