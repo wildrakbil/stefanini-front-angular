@@ -33,7 +33,7 @@ export class AuthService {
         this.currentUser = user.user.username;
       }),
       catchError(e =>{
-        swal.fire('Error', `Usuario o clave incorrecta`, 'warning');
+        //swal.fire('Error', `Usuario o clave incorrecta`, 'warning');
         console.error(e.error.mensaje);
         return throwError(e);
       })

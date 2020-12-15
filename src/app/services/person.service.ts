@@ -76,7 +76,7 @@ export class PersonService {
   }
 
   delete(id: Number): Observable<User> {
-    return this.http.delete<User>(`${this.personsUrl}/${id}`, httpOptions).pipe(
+    return this.http.delete<User>(`${this.personUrl}/${id}`, httpOptions).pipe(
       catchError(e => {
         console.error(e.error.mensaje);
         swal.fire(e.error.mensaje, e.error.error, 'error');

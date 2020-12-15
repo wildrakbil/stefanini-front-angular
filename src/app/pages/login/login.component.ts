@@ -38,9 +38,10 @@ export class LoginComponent implements OnInit {
         swal.fire('oK', `Sesion iniciada`, 'success');
         this.router.navigateByUrl('/');
       },
-      error: err => {
-        console.log(err);
-        this.alertService.danger('Unable to Login');
+      error: e => {
+        console.log(e);
+        swal.fire('Error', `Usuario o clave incorrecta`, 'warning');
+        //this.alertService.danger('Unable to Login');
       }
     };
     this.authService.login(f.value).subscribe(loginObserver);
@@ -51,7 +52,8 @@ export class LoginComponent implements OnInit {
     const user = res.user;
     console.log(user);
 
-    var f = {username: user.email, password:user.email};
+    //var f = {username: user.email.substring(0, 20), password:user.email}; // Se comenta debido a que el inicio de sesion no se realiza adecuadamente con un usuario registrado diferente a Admin
+    var f = {username: "admin", password:12345};
 
 
     const loginObserver = {
@@ -63,8 +65,8 @@ export class LoginComponent implements OnInit {
       },
       error: err => {
         console.log(err);
-        var person = {username: user.email, password:user.email, identification: Date.now()};
-        this.alertService.danger('Unable to Login');
+        var person = {firstname: user.email.substring(0, 20), username: user.email.substring(0, 20), password:user.email, identification: Date.now(), role: {name:"ADMIN"}};
+        this.create(person);
       }
     };
     this.authService.login(f).subscribe(loginObserver);
@@ -73,8 +75,8 @@ export class LoginComponent implements OnInit {
   create(person): void {
     this.personService.create(person)
       .subscribe(
-        person => {
-          this.router.navigate(['/home']);
+        response => {
+          this.router.navigate(['/']);
           swal.fire('Nuevo cliente', `El cliente ${person.firstname} ha sido creado con éxito`, 'success');
         },
         err => {
