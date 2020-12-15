@@ -11,6 +11,10 @@ import { ComponentsModule } from '../components/components.module';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { PersonComponent } from './person/person.component';
+import { ListComponent } from './reservas/list/list.component';
+import { DetailsComponent } from './reservas/details/details.component';
+import { CreateComponent } from './reservas/create/create.component';
+import { UpdateComponent } from './reservas/update/update.component';
 
 
 @NgModule({
@@ -19,6 +23,10 @@ import { PersonComponent } from './person/person.component';
     HomeComponent,
     LoginComponent,
     PersonComponent,
+    ListComponent,
+    DetailsComponent,
+    CreateComponent,
+    UpdateComponent,
   ],
   imports: [
     CommonModule,
