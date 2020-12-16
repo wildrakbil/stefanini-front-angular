@@ -21,7 +21,7 @@ export const propertiesLps = {
       galeria: true
     },
     login:{
-      google:false
+      google:true
     }
   }
 };

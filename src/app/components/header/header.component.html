@@ -25,29 +25,34 @@
           >Home <span class="sr-only">(current)</span></a
         >
       </li>-->
-
       <li class="nav-item active">
         <a class="nav-link" [routerLink]="['/servicios']" routerLinkActive="active"
           >Servicios <span class="sr-only">(current)</span></a
         >
       </li>
 
-      <li class="nav-item active">
-        <a class="nav-link" [routerLink]="['/reservas/list']" routerLinkActive="active"
-          >Reservas <span class="sr-only">(current)</span></a
-        >
-      </li>
+      <span *ngIf="userId">
+        <li class="nav-item active" >
+          <a class="nav-link" [routerLink]="['/reservas/list']" routerLinkActive="active"
+            >Reservas <span class="sr-only">(current)</span></a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/login']" (click)="logout()"
+            >Logout</a
+          >
+        </li>
 
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/login']" routerLinkActive="active"
-          >Login</a
-        >
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/login']" (click)="logout()"
-          >Logout</a
-        >
-      </li>
+      </span>
+      
+      <span *ngIf="!userId">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/login']" routerLinkActive="active"
+            >Login</a
+          >
+        </li>
+      </span>
+      
     </ul>
   </div>
 </nav>

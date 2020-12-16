@@ -13,6 +13,8 @@ export class HeaderComponent implements OnInit {
 
   public _lpsConfig:IPropertiesLPS;
 
+  userId: any;
+  
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -20,12 +22,16 @@ export class HeaderComponent implements OnInit {
     @Inject(APP_CONFIG) private appConfig: any
     ) {
       this._lpsConfig = appConfig;
-
+      authService.getLoggedInId.subscribe(userId => this.changeName(userId));
     }
 
   ngOnInit(): void {
-
+    this.userId=localStorage.getItem("user")?true:false;
   }
+
+  private changeName(userId: Number): void {
+    this.userId=localStorage.getItem("user")?true:false;
+}
 
   logout() {
     this.alertService.info('Checking User Info');

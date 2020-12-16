@@ -1,5 +1,5 @@
 
-import { Injectable } from "@angular/core";
+import { Injectable, EventEmitter, Output } from "@angular/core";
 import {Router} from '@angular/router';
 import { HttpClient } from "@angular/common/http";
 import { map } from "rxjs/operators";
@@ -21,6 +21,8 @@ export class AuthService {
   decodedToken: any;
   currentUser: User;
 
+  @Output() getLoggedInId: EventEmitter<any> = new EventEmitter();
+
   constructor(private http: HttpClient,private router:Router) { }
 
   login(model: any) {
@@ -31,6 +33,7 @@ export class AuthService {
         localStorage.setItem("user", user.user.username);
         this.decodedToken = this.helper.decodeToken(user.token);
         this.currentUser = user.user.username;
+        this.getLoggedInId.emit(user.user.username)
       }),
       catchError(e =>{
         //swal.fire('Error', `Usuario o clave incorrecta`, 'warning');
@@ -49,6 +52,7 @@ export class AuthService {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     console.log('user out storage');
+    this.getLoggedInId.emit(null);
   }
 
 }
