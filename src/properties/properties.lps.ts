@@ -18,9 +18,12 @@ export const propertiesLps = {
     servicios: {
       lista: true,
       mosaico: true,
-      galeria: true,
+      galeria: true
     },
-  },
+    login:{
+      google:false
+    }
+  }
 };
 
 export interface IPropertiesLPS {
@@ -38,6 +41,9 @@ export interface IPropertiesLPS {
       lista: boolean;
       mosaico: boolean;
       galeria: boolean;
+    },
+    login:{
+      google:false
     };
   };
 }

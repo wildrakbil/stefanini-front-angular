@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { AlertService } from 'ngx-alerts';
@@ -9,6 +9,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import firebase from 'firebase/app';
 import { PersonService } from 'src/app/services/person.service';
 import { User } from 'src/app/models/user';
+import { IPropertiesLPS, APP_CONFIG } from 'src/properties/properties.lps';
 
 @Component({
   selector: 'app-login',
@@ -18,13 +19,16 @@ import { User } from 'src/app/models/user';
 
 export class LoginComponent implements OnInit {
 
-  
+  public _lpsConfig:IPropertiesLPS;
 
   constructor(private authService: AuthService,
     private router: Router,
     private alertService: AlertService,
     private afAuth: AngularFireAuth,
-    private personService: PersonService) { }
+    private personService: PersonService,
+    @Inject(APP_CONFIG) private appConfig: any) { 
+      this._lpsConfig = appConfig;
+    }
 
   ngOnInit() {
   }

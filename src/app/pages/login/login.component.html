@@ -16,8 +16,7 @@
                         class="fas fa-sign-in-alt"></i></button>
             </div>
         </form>
-
-        <div class="form-group mt-3">
+        <div class="form-group mt-3" *ngIf="_lpsConfig.componentes.login.google">
             <button (click)="loginGoogle()" class="btn btn-lg btn-google" >Google</button>
         </div>
     </div>
