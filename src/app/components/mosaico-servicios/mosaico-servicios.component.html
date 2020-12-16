@@ -7,7 +7,7 @@
   <div class="card-body">
     <blockquote class="blockquote mb-0">
       <p>{{ item.description }}</p>
-      <a href="#" class="btn btn-primary" *ngIf="reservar">Reservar</a>
+      <a href="#" class="btn btn-primary" [routerLink]="['/reservas/create']">Reservar</a>
     </blockquote>
   </div>
 </div>
